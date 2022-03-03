@@ -1,4 +1,4 @@
-package br.com.projeto.matchessimulator
+package br.com.projeto.matchsimulator
 
 import org.junit.Test
 

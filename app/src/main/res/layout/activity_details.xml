@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".Details">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/Widget.Material3.CollapsingToolbar"
+            app:expandedTitleTextAppearance="@style/TextAppearance.Design.CollapsingToolbar.Expanded">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_place"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="0dp" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/match_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/margin_default"
+                app:layout_constraintBottom_toTopOf="@+id/left_team_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Descrição da partida" />
+
+
+            <TextView
+                android:id="@+id/right_team_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBottom_toBottomOf="@+id/right_team_image"
+                app:layout_constraintEnd_toStartOf="@+id/right_team_image"
+                app:layout_constraintStart_toEndOf="@+id/text_X"
+                app:layout_constraintTop_toTopOf="@+id/right_team_image"
+                tools:text="3" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/left_team_image"
+                android:layout_width="@dimen/team_image_size"
+                android:layout_height="@dimen/team_image_size"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default"
+                android:contentDescription="@string/cd_left_team_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/match_description"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/left_team_image_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                app:layout_constraintStart_toStartOf="@+id/left_team_image"
+                app:layout_constraintTop_toBottomOf="@+id/left_team_image"
+                app:layout_constraintEnd_toEndOf="@+id/left_team_image" />
+
+            <TextView
+                android:id="@+id/left_team_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/left_team_image"
+                app:layout_constraintHorizontal_bias="0.564"
+                app:layout_constraintStart_toStartOf="@+id/left_team_image"
+                app:layout_constraintTop_toBottomOf="@+id/left_team_image_rating"
+                tools:text="Time 1" />
+
+            <TextView
+                android:id="@+id/left_team_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBottom_toBottomOf="@+id/left_team_image"
+                app:layout_constraintEnd_toStartOf="@+id/text_X"
+                app:layout_constraintStart_toEndOf="@+id/left_team_image"
+                app:layout_constraintTop_toTopOf="@+id/left_team_image"
+                tools:text="3" />
+
+            <TextView
+                android:id="@+id/text_X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="X" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/right_team_image"
+                android:layout_width="@dimen/team_image_size"
+                android:layout_height="@dimen/team_image_size"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:contentDescription="@string/cd_right_team_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/match_description"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/right_team_image_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                app:layout_constraintStart_toStartOf="@+id/right_team_image"
+                app:layout_constraintTop_toBottomOf="@+id/right_team_image"
+                app:layout_constraintEnd_toEndOf="@+id/right_team_image" />
+
+            <TextView
+                android:id="@+id/right_team_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/right_team_image"
+                app:layout_constraintStart_toStartOf="@+id/right_team_image"
+                app:layout_constraintTop_toBottomOf="@+id/right_team_image_rating"
+                tools:text="Time 2" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

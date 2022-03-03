@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_default">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/right_team_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/right_team_image"
+            app:layout_constraintEnd_toStartOf="@+id/right_team_image"
+            app:layout_constraintStart_toEndOf="@+id/text_X"
+            app:layout_constraintTop_toTopOf="@+id/right_team_image"
+            tools:text="3" />
+
+        <ImageView
+            android:id="@+id/left_team_image"
+            android:layout_width="@dimen/team_image_size"
+            android:layout_height="@dimen/team_image_size"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:contentDescription="@string/cd_left_team_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/left_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/left_team_image"
+            app:layout_constraintHorizontal_bias="0.564"
+            app:layout_constraintStart_toStartOf="@+id/left_team_image"
+            app:layout_constraintTop_toBottomOf="@+id/left_team_image"
+            tools:text="Time 1" />
+
+        <TextView
+            android:id="@+id/left_team_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/left_team_image"
+            app:layout_constraintEnd_toStartOf="@+id/text_X"
+            app:layout_constraintStart_toEndOf="@+id/left_team_image"
+            app:layout_constraintTop_toTopOf="@+id/left_team_image"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/text_X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="X" />
+
+        <ImageView
+            android:id="@+id/right_team_image"
+            android:layout_width="@dimen/team_image_size"
+            android:layout_height="@dimen/team_image_size"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:contentDescription="@string/cd_right_team_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/right_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Time 2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/right_team_image"
+            app:layout_constraintStart_toStartOf="@+id/right_team_image"
+            app:layout_constraintTop_toBottomOf="@+id/right_team_image" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

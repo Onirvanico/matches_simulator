@@ -1,4 +1,4 @@
-package br.com.projeto.matchessimulator
+package br.com.projeto.matchsimulator
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
