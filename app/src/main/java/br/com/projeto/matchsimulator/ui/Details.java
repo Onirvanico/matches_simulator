@@ -1,4 +1,4 @@
-package br.com.projeto.matchsimulator;
+package br.com.projeto.matchsimulator.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 

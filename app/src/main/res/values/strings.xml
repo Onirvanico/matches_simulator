@@ -3,4 +3,5 @@
     <string name="cd_simulator_button">Simulate match button</string>
     <string name="cd_left_team_image">Team image to left</string>
     <string name="cd_right_team_image">Team image to right</string>
+    <string name="text_versus">X</string>
 </resources>
