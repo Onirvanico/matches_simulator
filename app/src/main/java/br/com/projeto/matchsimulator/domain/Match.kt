@@ -1,7 +1,10 @@
 package br.com.projeto.matchsimulator.domain
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Match(
 
     @SerializedName("descricao")
@@ -15,4 +18,4 @@ data class Match(
 
     @SerializedName("visitante")
     val rightTeam: Team
-)
+) : Parcelable

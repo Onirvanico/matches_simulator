@@ -1,12 +1,9 @@
 package br.com.projeto.matchsimulator.ui
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
+import android.content.Intent
 import android.os.Bundle
-import android.util.JsonReader
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.animation.doOnRepeat
 import br.com.projeto.matchsimulator.adapter.MatchesAdapter
 import br.com.projeto.matchsimulator.data.MatchesRetrofit
 import br.com.projeto.matchsimulator.databinding.ActivityMainBinding
@@ -19,6 +16,8 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private lateinit var matches: List<Match>
+    private lateinit var adapter: MatchesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,26 +32,12 @@ class MainActivity : AppCompatActivity() {
     private fun configFABSwipe() {
         binding.mockFab.setOnClickListener {
             it.animate().rotationBy(360F).setDuration(500)
-                /*.setListener( object : Animator.AnimatorListener {
-                    override fun onAnimationStart(p0: Animator?) {
-                        p0?.start()
-                    }
-
-                    override fun onAnimationEnd(p0: Animator?) {
-                        p0?.end()
-                    }
-
-                    override fun onAnimationCancel(p0: Animator?) {
-                        p0?.cancel()
-                    }
-
-                    override fun onAnimationRepeat(p0: Animator?) {
-                        if (p0 != null) {
-                            p0.doOnRepeat {  }
-                        }
-                    }
-
-                })*/
+            val random = Random()
+            matches.forEach { match ->
+                match.leftTeam.score = random.nextInt(match.leftTeam.stars.plus(1))
+                match.rightTeam.score = random.nextInt(match.rightTeam.stars.plus(1))
+                adapter.notifyItemChanged(matches.indexOf(match))
+            }
         }
     }
 
@@ -73,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<List<Match>>, response: Response<List<Match>>) {
                 if (response.isSuccessful) {
                     if (response.code() == 200) {
-                        Log.i("SIZE", "onResponse: " + response.body()?.size)
+                        matches = response.body() ?: Collections.emptyList()
 
                         configAdapter(response)
 
@@ -103,7 +88,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun configAdapter(response: Response<List<Match>>) {
         binding.matchRecyclerview.setHasFixedSize(true)
-        val adapter = MatchesAdapter(response.body() ?: Collections.emptyList())
+        adapter = MatchesAdapter(response.body() ?: Collections.emptyList())
         binding.matchRecyclerview.adapter = adapter
+
+        configAdapterClick()
+    }
+
+    private fun configAdapterClick() {
+        adapter.onItemClick = { match: Match, position: Int ->
+            val intent = Intent(this, Details::class.java)
+            intent.putExtra(Extra.MATCH_KEY, match)
+            startActivity(intent)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
