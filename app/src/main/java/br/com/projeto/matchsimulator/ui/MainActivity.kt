@@ -12,12 +12,13 @@ import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.RuntimeException
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private lateinit var matches: List<Match>
-    private lateinit var adapter: MatchesAdapter
+    private var adapter: MatchesAdapter = MatchesAdapter(Collections.emptyList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 match.leftTeam.score = random.nextInt(match.leftTeam.stars.plus(1))
                 match.rightTeam.score = random.nextInt(match.rightTeam.stars.plus(1))
                 adapter.notifyItemChanged(matches.indexOf(match))
+
             }
         }
     }
@@ -99,6 +101,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Details::class.java)
             intent.putExtra(Extra.MATCH_KEY, match)
             startActivity(intent)
+           // throw  RuntimeException("new Error")
         }
     }
 
